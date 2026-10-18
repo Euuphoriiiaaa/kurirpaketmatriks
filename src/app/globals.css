@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variabel tema. --line = warna garis tebal ala stiker/kartu permainan. */
+:root {
+  --bg: #bfe6ff; --card: #fffdf5; --ink: #1b2a4a; --muted: #5b6b8c; --line: #1b2a4a;
+  --accent: #ff8a1f; --road: #e6edf5; --jam: repeating-linear-gradient(45deg,#ffe28a 0 9px,#ffc83d 9px 18px);
+  --term: #14213d; --term-ink: #e8f1ff;
+}
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 14%, transparent) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  color: var(--ink); font-family: var(--font-body), system-ui, sans-serif; font-size: 16px;
+}
+h1, h2, h3, .font-display { font-family: var(--font-display), system-ui, sans-serif; }
+
+.chunky { background: var(--card); border: 3px solid var(--line); border-radius: 1.5rem; box-shadow: 0 6px 0 var(--line); }
+.btn3d { border: 3px solid var(--line); box-shadow: 0 4px 0 var(--line); transition: transform .08s, box-shadow .08s, filter .15s; font-family: var(--font-display), system-ui; }
+.btn3d:hover:not(:disabled) { filter: brightness(1.07); }
+.btn3d:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 0 0 var(--line); }
+.btn3d:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+[data-theme='cyber'] { --bg:#0b0221; --card:#1a0b3d; --ink:#e0f7ff; --muted:#a78bfa; --line:#ff2bd6; --accent:#ff2bd6; --road:#2a1458; --jam:#7f1d4a; --term:#05010f; --term-ink:#00f0ff; }
+[data-theme='pastel'] { --bg:#fde4ec; --card:#fffafc; --ink:#4c3b5c; --muted:#8b7a9c; --line:#6b568a; --accent:#a78bfa; --road:#e0f2fe; --jam:#fecdd3; --term:#4c3b5c; --term-ink:#fdf2f8; }
+[data-theme='dark'] { --bg:#020617; --card:#0f172a; --ink:#e2e8f0; --muted:#94a3b8; --line:#38bdf8; --accent:#38bdf8; --road:#334155; --jam:#7f1d1d; --term:#000; --term-ink:#cbd5e1; }
+
+/* Tailwind v3 tidak bisa memberi opacity pada warna berbasis var(), jadi dibuat manual */
+.hv-row { transition: background-color .15s; }
+.hv-row:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.hv-row:active { background: color-mix(in srgb, var(--accent) 24%, transparent); }
+.bg-acc-soft { background: color-mix(in srgb, var(--accent) 15%, transparent); }
